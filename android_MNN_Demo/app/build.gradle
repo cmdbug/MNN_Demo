@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.wzt.mnn"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                arguments "-DANDROID_ARM_NEON=TRUE", "-DANDROID_PLATFORM=android-21", "-DANDROID_STL=c++_shared"
+                cppFlags ""
+            }
+        }
+        ndk {
+            moduleName "WztMnnJniLog"
+            ldLibs "log", "z", "m"
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs', 'libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+//    implementation(name:'MNN-release', ext:'aar')
+
+    // Use the most recent version of CameraX, currently that is alpha04
+    def camerax_version = "1.0.0-alpha05"
+    //noinspection GradleDependency
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    //noinspection GradleDependency
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+
+    implementation 'com.android.support:multidex:1.0.3'
+    // crash
+    implementation 'com.zxy.android:recovery:1.0.0'
+    // photoview
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+//    implementation 'com.bm.photoview:library:1.4.1'
+    // FFMMR
+    implementation 'com.github.wseemann:FFmpegMediaMetadataRetriever-core:1.0.15'
+    implementation 'com.github.wseemann:FFmpegMediaMetadataRetriever-native:1.0.15'
+}
