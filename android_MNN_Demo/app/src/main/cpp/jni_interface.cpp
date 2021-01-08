@@ -20,6 +20,10 @@
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_wzt_mnn_model_NanoDet_init(JNIEnv *env, jclass clazz, jstring name, jstring path, jboolean use_gpu) {
+	if (NanoDet::detector != nullptr) {
+        delete NanoDet::detector;
+        NanoDet::detector = nullptr;
+    }
     if (NanoDet::detector == nullptr) {
         const char *pathTemp = env->GetStringUTFChars(path, 0);
         std::string modelPath = pathTemp;
