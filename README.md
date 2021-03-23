@@ -35,7 +35,7 @@
 
 | nanodet | xxxxxx | xxxxxx |
 |-------------------|-------------|---------|
-|<img width="270" height="500" src="https://github.com/cmdbug/MNN_Demo/blob/main/Screenshots/Android_Meizu16x_nanodet.jpg"/>| none| none |
+|<img width="270" height="500" src="./Screenshots/Android_Meizu16x_nanodet.jpg"/>| none| none |
 
 
 感谢:<br/>
