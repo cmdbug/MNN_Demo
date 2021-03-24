@@ -64,7 +64,7 @@ NanoDet::detect(cv::Mat &raw_image, unsigned char *image_bytes, int width, int h
     std::memcpy(config.normal, norm_vals, sizeof(norm_vals));
     config.filterType = MNN::CV::NEAREST;
     config.sourceFormat = MNN::CV::ImageFormat::RGB;
-    config.destFormat = MNN::CV::ImageFormat::RGB;
+    config.destFormat = MNN::CV::ImageFormat::BGR;
     std::shared_ptr<MNN::CV::ImageProcess> pretreat(MNN::CV::ImageProcess::create(config));
     pretreat->convert(image.data, in_w, in_h, image.step[0], input_tensor);
 
