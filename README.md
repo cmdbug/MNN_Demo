@@ -25,9 +25,9 @@
 ```
 
 ### 模型
-| model | android | iOS | from |
-|-------------------|:--------:|:--------:|:--------:|
-| NanoDet           | yes | yes |  [Github](https://github.com/RangiLyu/nanodet)   |
+| model | android | iOS | from | other |
+|-------------------|:--------:|:--------:|:--------:|:--------:|
+| NanoDet           | yes | yes |  [Github](https://github.com/RangiLyu/nanodet)   | [NCNN](https://github.com/cmdbug/YOLOv5_NCNN) [TNN](https://github.com/cmdbug/TNN_Demo) |
 
 ### Android：
 * 由于手机性能、图像尺寸等因素导致FPS在不同手机上相差比较大。该项目主要测试MNN框架的使用，具体模型的转换可以去MNN官方查看转换教程。<br/>
